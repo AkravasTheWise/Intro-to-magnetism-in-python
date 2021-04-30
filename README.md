@@ -1,4 +1,3 @@
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AkravasTheWise/Intro-to-magnetism-in-python/HEAD?filepath=SkyrmionUbermagExamples.ipynb)
 # Intro to magnetism in Python
 In the myriad of open source and academic code alternatives have risen because of the eagerness and need of the international student public for easy-to-use-and access tools. Being open source at inception, Python is an extraordinary language to code and automate tasks in. The purpose of this repository is not to give a complete bottom-up guide to scientific coding with Python since there are so many other good ones, but rather an introduction to data science and simulation in that language with actionable and easy to replicate examples that can be used at any level of proeficency. Think of this as a whitepaper to give the reader a taste of the many advantages of using Python for computational magnetism.
 
