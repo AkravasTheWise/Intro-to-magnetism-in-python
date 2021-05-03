@@ -1,9 +1,12 @@
+## See this tutorial online:
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AkravasTheWise/Intro-to-magnetism-in-python/HEAD?filepath=binder_tutorial%2FREADME.ipynb)
+
 # Intro to magnetism in Python
 In the myriad of open source and academic code alternatives have risen because of the eagerness and need of the international student public for easy-to-use-and access tools. Being open source at inception, Python is an extraordinary language to code and automate tasks in. The purpose of this repository is not to give a complete bottom-up guide to scientific coding with Python since there are so many other good ones, but rather an introduction to data science and simulation in that language with actionable and easy to replicate examples that can be used at any level of proeficency. Think of this as a whitepaper to give the reader a taste of the many advantages of using Python for computational magnetism.
 
 This tutorial is intended for members of the [Applied Spintronics Group](http://www.akermanlab.com/) at the University of Gothenburg, but anyone is free to use it and report feedback on it. Also, if you know any tools that I might want to include in my toolbox, please let me know.
 
-## Installing and fitting: the quick-and-dirty
+## Installing and environments: the quick-and-dirty
 
 As any other programming language, Python works by importing prevously written code for particulartr tasks. What diffentiates it from other languages is that most the most powerful codes for data science and science applications is open source and has a great and supportive community that is happy to help for free. A previously written code that provides ready-to-use functions and features is called a **module**. A collection of modules designed for a particular functionality (for example plotting, image analysis or matrix operations) is called a **package**. 
 
@@ -15,7 +18,7 @@ It's worth saying that it doesn't matter if you install a package with Anaconda 
 
 If you have a **Linux** based machine, congrutations, you most likely already have Python. Check the version of Python you have by typing this in your preferred terminal:
 
-<code>$ python -V<\code>
+`$ python -V`
 
 If you have a 3.6 or older version of Python, you might want to consider updating it to 3.8 or newer, since those older versions are currently [not being supported or won't be supported soon](https://www.python.org/downloads/) and will become obsolete. To install python 3.8, just type:
 
@@ -59,7 +62,7 @@ If you want to create an environment and install a package (`myNeatPackage`) on 
     
 Feel free to get creative with whatever you need. If you went the condaless route, with **pip** only, then you must use:
 
-`python -m venv myShinyNewEnvironment`
+`python -m venv a\useful\path\myShinyNewEnvironment`
    
 Replacing `a\useful\path` with whichever path you want to use. Consider that any virtual environment you create this way can be activated using conda and viceversa if saved in `Anaconda3\envs`. To activate the environment in Windows PowerShell:
 
@@ -73,13 +76,13 @@ As you can tell, Anaconda takes care of most of the heavy lifting and it makes y
     
 As a general rule, you want to create an environment for each different coding project you take on. That way, if you copy the project and clone its environment, you can use any other machine and get consistent results. If you want to more about virtual environments in [Anaconda you can check here](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) or [click here for a more general (condaless) use of them](https://docs.python.org/3/library/venv.html).
     
-To finish, we'll visualize some randomly generated points in just a line as a practical example. First off, create a environment, I'll call it `babySteps`:
+To finish, we'll visualize some randomly generated points in just a line as a practical example. First off, create a environment, I'll call it `testEnv`:
     
-`conda create -n babySteps python=3.8 scipy matplotlib -y`
+`conda create -n testEnv python=3.8 scipy matplotlib -y`
     
 With just that line, we are creating a new virtual environment in Python 3.8 and installed the `scipy` (Scientific Python) and `matplotlib` (useful and quick plotting) packages. Go to the environment:
     
-`conda activate babySteps`
+`conda activate testEnv`
     
 And now we plot some randomly generated data:
     
@@ -89,4 +92,4 @@ Which is just a sine function with some random noise thrown in. I have used some
     
 Feel free to explore the tutorials according to your interests after you are done with the three-part introduction. And guess what? You are done with part one.
     
-[Part 2: Scripts, functions and the Jupyter Notebook](ScriptsJupyter.md)
+[**Part 2: Scripts, functions and the Jupyter Notebook**](ScriptsJupyter.md)
