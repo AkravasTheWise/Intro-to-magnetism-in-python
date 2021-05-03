@@ -1,0 +1,88 @@
+# Intro to magnetism in Python, part 2
+
+## Scripts, modules and the Jupyter Notebook
+
+So far we have introduced the foundations needed to work with Python. Now, we delve into the ways to work *within* it. As in any other languages, a piece of code that performs
+a task is called a *script*. What we did on the past tutorial is just that. However, as the complexity of those tasks grows, it's not very practical to write scripts directly on
+the command line. To save the script in a more convinient form, copy the lines below to your favorite editor (emacs, gedit, Notepad++ or even regular Notepad) and save it as 
+`coolPlot.py`:
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+plt.plot(np.linspace(0,2*np.pi,100), np.sin(np.linspace(0,2*np.pi,100)) + np.random.rand(100))
+plt.show()
+```
+
+The `.py` extension is what it will tell our machine to run it as a Python script. To execute it, open the command line and activate out enviroment `testEnv` from before. Now, type:
+
+`python coolPlot.py`
+
+You should see the same as before. It's interesting that this step will not work unless you are working in `testEnv` since we have not installed any packages in base Python. 
+Although this concept is fine for a purpose built one-off task, as the project's complexity increases one becomes less likely to be able to keep track and efficiently debug really 
+long scripts. For that, Python is very well suited for writting and using custom user-written code. A script that you `import` to use in your code is called a *module*. I'll get 
+back to modules in a minute, but first let's talk about functions and their practicality.
+
+As in any other programming language, functions are recurring computational tasks that we define in order to perform them systematically without the need to copy and paste their 
+code over and over again. Like a mathematical function, a Python function has inputs and outputs. These can be pretty much every type of data we might need like a string of characters,
+an integer, a float number, a complex number, a boolean condition or any size arrays of them. The way to **define a function** in Python is by using the prefix **def** and to indent
+the operations to perform. Let's say you are doing an iterative task for data processing and you want to automate the extraction of some data. For example, say you have a collection
+of angular magnetoresistance (AMR) curves and you suspect that a change in the magnetic ratio MR=(R(H=0)-R(H=H<sub>sat</sub>))/R(H=0) is dependent on the angle. In order to 
+calculate MR for each corresponding curve, you use the following function:
+
+```python
+def extractMR (H, R):
+    R0 = R[H == min(np.abs(H))] # the R with H closest to zero
+    Rsat = R[np.abs(1/H) == min(np.abs(1/H))] # the R with 1/H closest to zero. Note that this is the case for saturation, since 1/H is small for large fields
+    return (R0-Rsat)/R0
+```
+
+In your code, if you have the datasets of fields **H** and resistances **R**, you can calculate MR systematically with `for` or `while` loops and the function above.
+
+Let's say you have a collection of functions that you use routinely and copying and pasting them in your script everytime is cumbersome and not very efective at keeping everything
+tidy and streamlined. For that, you want to keep the functions separate and import them for the task at hand with the aptly named `import` command. We've been using the `import`
+command for using the scientific python packages we installed previously, but it can also be used to import our own custom modules. In order to, say, import the function above to
+a script, we would first need to save it in a file like `mr.py`. When writing our code, just type 
+
+```python
+import mr
+```
+
+on the beginning of your code, and use `mr.extractMR` whenever you want to calculate the magnetic ratio. Note that one module can contain as many functions as you need, so I 
+advise to sort your modules by functionality and not create any unneccessary clutter that interferes with your workflow.
+
+A recurring annoyance for working in any programming language is debugging. Specially while working on longer scripts, debugging can be a bothersome affair if there is no clear
+indication where the mistake is. Furthermore, unless we include a queue of completion prompts, we won't know when the code gets stuck in a loop or if we forgot to include a
+return task and it is just creating some data which it immediately deletes after it done running. For all of the numbered reasons and more, a tool that allows us to run the code
+piecemeal is ideal to avoid certain pitfalls associated with script writting. Such tool is called the **Jupyter notebook** and it is a wonderful frontend for python programming
+with good UI and easily scalable to even data industry standards, as giants like [Netflix use it for their new features and data analysis](https://netflixtechblog.com/notebook-innovation-591ee3221233).
+
+To install the jupyter notebook, log into a terminal and the environment you're working at, and type:
+
+`
+conda install -c conda-forge notebook
+`
+for Anaconda or:
+`
+pip install notebook
+`
+for pip. To run the notebook interface, use:
+`
+jupyter notebook
+`
+A new tab should automatically open on your default web browser and show a screen similar to this:
+![Jupyter start screen](/images/jupyter1.png)
+In this tab, you can navigate as you would in a conventional file explorer, you can create, move and rename files and folders and even simulate a python terminal to run scripts.
+To create and run a new notebook, click on New/Notebook/Python 3:
+![Creating a new Jupyter notebook](/images/jupyter2.png)
+You'll be greeted by an empty notebook:
+![Empty notebook](/images/jupyter3.png)
+These rectangles are called cells and they will be where our code can be split into snippets than can be run unsequentially for debugging, experimenting, tweaking, or whatever 
+purpose we want. You can run a cell by pressing &#8679; + &crarr; An operational notebook looks like this:
+![Sample notebook](/images/jupyter4.png)
+
+To finish the second part of the tutorial, I'd like to do a hands-on example in an actual notebook for a task that you are more than familiar with: curve fitting.
+
+[Curve Fitting in Jupyter](Fitting_example.ipynb)
+
+[**Part 3: Micromagnetics simulations with Ubermag**](Ubermag.md)
